@@ -1,0 +1,7 @@
+copy-without-holo:
+  _target_: src.data.general_midvholov2fraud.GeneralDatasetMIDVv2
+  input_dir: ${paths.data_cropped_dir}/fraud/copy_without_holo/
+  split_dir: ${paths.midvholo_split_dir}
+  split_file: "test.txt"
+  transform: ${valtransform}
+  skip: ${paths.frame_skip}

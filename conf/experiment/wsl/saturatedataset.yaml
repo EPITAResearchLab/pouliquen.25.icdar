@@ -1,0 +1,100 @@
+# @package _global_
+
+model:
+  model: 
+    backbone_name: lcnet_050
+
+data:
+  test:
+    midv-holo-test-blur7:
+      _target_: src.data.midv_holo_data.MIDVHolov2DataSplit
+      input_dir: ${paths.data_cropped_dir}/
+      split_file: ${paths.midvholo_split_dir}/simple/test.txt
+      transform: 
+        _target_: torchvision.transforms.Compose
+        transforms:
+          - _target_: torchvision.transforms.Resize
+            size: 224
+          - _target_: torchvision.transforms.GaussianBlur
+            kernel_size: 7
+            sigma: 4
+          - _target_: torchvision.transforms.ToTensor
+          - _target_: torchvision.transforms.Normalize
+            mean: [0.485, 0.456, 0.406]
+            std: [0.229, 0.224, 0.225]
+      skip: ${paths.frame_skip}
+    midv-holo-test-blur9:
+      _target_: src.data.midv_holo_data.MIDVHolov2DataSplit
+      input_dir: ${paths.data_cropped_dir}/
+      split_file: ${paths.midvholo_split_dir}/simple/test.txt
+      transform: 
+        _target_: torchvision.transforms.Compose
+        transforms:
+          - _target_: torchvision.transforms.Resize
+            size: 224
+          - _target_: torchvision.transforms.GaussianBlur
+            kernel_size: 9
+            sigma: 4
+          - _target_: torchvision.transforms.ToTensor
+          - _target_: torchvision.transforms.Normalize
+            mean: [0.485, 0.456, 0.406]
+            std: [0.229, 0.224, 0.225]
+      skip: ${paths.frame_skip}
+    midv-holo-test-blur3:
+      _target_: src.data.midv_holo_data.MIDVHolov2DataSplit
+      input_dir: ${paths.data_cropped_dir}/
+      split_file: ${paths.midvholo_split_dir}/simple/test.txt
+      transform: 
+        _target_: torchvision.transforms.Compose
+        transforms:
+          - _target_: torchvision.transforms.Resize
+            size: 224
+          - _target_: torchvision.transforms.GaussianBlur
+            kernel_size: 3
+            sigma: 4
+          - _target_: torchvision.transforms.ToTensor
+          - _target_: torchvision.transforms.Normalize
+            mean: [0.485, 0.456, 0.406]
+            std: [0.229, 0.224, 0.225]
+      skip: ${paths.frame_skip}
+    midv-holo-test-JPG80:
+      _target_: src.data.midv_holo_data.MIDVHolov2DataSplit
+      input_dir: ${paths.data_cropped_dir}/
+      split_file: ${paths.midvholo_split_dir}/simple/test.txt
+      transform: 
+        _target_: torchvision.transforms.Compose
+        transforms:
+          - _target_: torchvision.transforms.Resize
+            size: 224
+          - _target_: torchvision.transforms.v2.JPEG
+            quality: 80
+          - _target_: torchvision.transforms.ToTensor
+          - _target_: torchvision.transforms.Normalize
+            mean: [0.485, 0.456, 0.406]
+            std: [0.229, 0.224, 0.225]
+      skip: ${paths.frame_skip}
+    midv-holo-test-JPG60:
+      _target_: src.data.midv_holo_data.MIDVHolov2DataSplit
+      input_dir: ${paths.data_cropped_dir}/
+      split_file: ${paths.midvholo_split_dir}/simple/test.txt
+      transform: 
+        _target_: torchvision.transforms.Compose
+        transforms:
+          - _target_: torchvision.transforms.Resize
+            size: 224
+          - _target_: torchvision.transforms.v2.JPEG
+            quality: 60
+          - _target_: torchvision.transforms.ToTensor
+          - _target_: torchvision.transforms.Normalize
+            mean: [0.485, 0.456, 0.406]
+            std: [0.229, 0.224, 0.225]
+      skip: ${paths.frame_skip}
+
+training:
+  trainer:
+    epochs_max: 2
+
+paths:
+  frame_skip: 6 # for 5fps
+
+task_name: saturate_dataset_2p5fps_${model.model.backbone_name}_${paths.split_name}

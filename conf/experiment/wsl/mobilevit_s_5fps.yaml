@@ -1,0 +1,10 @@
+# @package _global_
+
+model:
+  model: 
+    backbone_name: mobilevit_xxs
+
+paths:
+  frame_skip: 3 # for 5fps
+
+task_name: wslf_5fps_s${seed}_${model.model.backbone_name}_${paths.split_name}

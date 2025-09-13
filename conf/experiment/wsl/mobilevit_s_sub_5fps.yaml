@@ -1,0 +1,11 @@
+# @package _global_
+
+model:
+  model: 
+    backbone_name: mobilevit_xxs
+
+paths:
+  frame_skip: 3 # for 5fps
+  data_cropped_dir: ${paths.data_dir}/cropped_sub/
+
+task_name: wslf_sub_5fps_${model.model.backbone_name}_${paths.split_name}

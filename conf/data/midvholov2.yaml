@@ -1,0 +1,18 @@
+defaults:
+  # MIDV-HOLO
+  - train/midv-holov2-train
+  - test/midv-holov2-test
+  - test/midv-holov2-photo-replacement
+  # MIDV-DynAttack
+  - test/midv-holov2-double-sticker
+  - test/midv-holov2-holo-completemask
+  - test/midv-holov2-holo-star-world
+  - test/midv-holov2-laser
+  - test/midv-holov2-leaf-holo
+  - test/midv-holov2-no-holo
+  - test/midv-holov2-plain-holo
+  - test/midv-holov2-plastified-led
+  - test/midv-holov2-plastified-lowreflect
+  - test/midv-holov2-plastified-noholo
+  - test/midv-holov2-swap
+  - test/midv-holov2-swap-three

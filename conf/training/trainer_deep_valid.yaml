@@ -1,0 +1,18 @@
+trainer:
+  _target_: src.traindl.trainer_valid_nonvalid.Trainer
+  epochs_max: 5
+  accelerator: cuda
+  run_name: "binary_holo_detector"
+  lr: 0.0001
+  model: ${model.model}
+  skip_n: ${paths.frame_skip}
+  seed: ${seed}
+
+datamodule:
+  _target_: src.traindl.trainer_valid_nonvalid.ValidNonValidDataModule
+  input_dir: ${data.train.input_dir}
+  split_dir: ${paths.midvholo_split_dir}/simple
+  legit_only: False
+  notransformations: False
+  num_workers: 4
+  batch_size: 128

@@ -1,0 +1,5 @@
+_target_: src.data.midv_holo_data.MIDVHolov2DataSplit
+input_dir: ${paths.data_cropped_dir}/
+split_file: ${paths.midvholo_split_dir}/simple/val.txt # used for calibration
+transform: ${valtransform}
+skip: ${paths.frame_skip}

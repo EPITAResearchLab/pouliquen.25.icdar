@@ -1,0 +1,15 @@
+# @package _global_
+
+model:
+  model: 
+    backbone_name: mobilevit_xxs
+
+paths:
+  frame_skip: 1
+
+
+training:
+  trainer:
+    epochs_max: 5
+    lr: 0.0001
+task_name: wslf_old_5epochs_15fps_s${seed}_${model.model.backbone_name}_${paths.split_name}

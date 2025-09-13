@@ -1,0 +1,13 @@
+defaults:
+  - train/midv-holo-train
+  - test/midv-holo-idplain-holo
+  - test/midv-holo-idswap
+  - test/midv-holo-leaf-holo
+  - test/midv-holo-pass-star-holo
+  - test/midv-holo-test
+  - test/midv-holo-pr-notseen
+  - test/midv-2020
+  # - test/interpol-noholo
+  # - test/internal-ita
+  # - test/internal-fra-bo
+  # - test/internal-eu-rp

@@ -1,0 +1,32 @@
+defaults:
+  - train/midv-holo-train
+  - test/midv-holo-idplain-holo
+  - test/midv-holo-idswap
+  - test/midv-holo-leaf-holo
+  - test/midv-holo-pass-star-holo
+  - test/midv-holo-test
+  - test/midv-holo-test
+  - test/midv-holo-pr-notseen
+  - test/midv-2020
+
+
+
+train:
+  applytransform: False
+  split_file: "train.txt" # use all train set training (no val)
+
+test:
+  midv-holo-test:
+    applytransform: False
+  midv-holo-pr-notseen:
+    applytransform: False
+  midv-2020:
+    applytransform: False
+  midv-holo-idplain-holo:
+    applytransform: False
+  midv-holo-idswap:
+    applytransform: False
+  midv-holo-leaf-holo:
+    applytransform: False
+  midv-holo-pass-star-holo:
+    applytransform: False

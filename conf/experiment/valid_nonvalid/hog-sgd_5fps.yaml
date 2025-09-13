@@ -1,0 +1,11 @@
+# @package _global_
+defaults:
+  - override /model: ml_model
+  - override /valtransform: torchtransformssub_pil
+
+paths:
+  data_cropped_dir: ${paths.data_dir}/cropped_sub/
+  frame_skip: 3 # for 5fps
+
+
+task_name: holodetectorffffffinal_5fps_s${seed}_hog-sgd_${paths.split_name}

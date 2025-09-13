@@ -1,0 +1,3 @@
+_target_: src.decision.cumulative.NDecision
+n_frames: 10
+th: 0.5

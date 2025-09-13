@@ -1,0 +1,14 @@
+# @package _global_
+
+model:
+  model: 
+    backbone_name: mobilevit_xxs
+
+paths:
+  frame_skip: 1 # for 5fps
+
+training:
+  trainer:
+    epochs_max: 5
+
+task_name: classifierfinal_old_15fps_s${seed}_${model.model.backbone_name}_${paths.split_name}

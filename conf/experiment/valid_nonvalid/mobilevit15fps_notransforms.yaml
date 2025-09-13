@@ -1,0 +1,18 @@
+# @package _global_
+
+model:
+  model: 
+    backbone_name: mobilevit_xxs
+
+paths:
+  data_cropped_dir: ${paths.data_dir}/cropped_sub/
+  frame_skip: 1 # for 15fps
+
+training:
+  datamodule:
+    notransformations: True
+  # trainer:
+  #   accelerator: cpu
+    # epochs_max: 1
+
+task_name: holodetectorfinal_notransfo_15fps_s${seed}_${model.model.backbone_name}_${paths.split_name}

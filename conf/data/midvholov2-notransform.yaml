@@ -1,0 +1,52 @@
+defaults:
+  # MIDV-HOLO
+  - train/midv-holov2-train
+  - test/midv-holov2-test
+  - test/midv-holov2-photo-replacement
+  # MIDV-DynAttack
+  - test/midv-holov2-double-sticker
+  - test/midv-holov2-holo-completemask
+  - test/midv-holov2-holo-star-world
+  - test/midv-holov2-laser
+  - test/midv-holov2-leaf-holo
+  - test/midv-holov2-no-holo
+  - test/midv-holov2-plain-holo
+  - test/midv-holov2-plastified-led
+  - test/midv-holov2-plastified-lowreflect
+  - test/midv-holov2-plastified-noholo
+  - test/midv-holov2-swap
+  - test/midv-holov2-swap-three
+
+train:
+  # applytransform: False
+  split_file: ${paths.midvholo_split_dir}/simple/trainval.txt # should use all train + val
+
+# test:
+#   double_sticker:
+#     applytransform: False
+#   midv-holo-photo-replacement:
+#     applytransform: False
+#   midv-holo-test:
+#     applytransform: False
+#   holo-completemask:
+#     applytransform: False
+#   holo-star-world:
+#     applytransform: False
+#   laser:
+#     applytransform: False
+#   leaf-holo:
+#     applytransform: False
+#   no-holo:
+#     applytransform: False
+#   plain-holo:
+#     applytransform: False
+#   plastified-led:
+#     applytransform: False
+#   plastified-lowreflect:
+#     applytransform: False
+#   plastified-noholo:
+#     applytransform: False
+#   swap:
+#     applytransform: False
+#   swap_three:
+#     applytransform: False

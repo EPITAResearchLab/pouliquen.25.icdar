@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - override /model: ml_model
+  - override /valtransform: torchtransformssub_pil
+
+paths:
+  data_cropped_dir: ${paths.data_dir}/cropped_sub/
+
+
+task_name: holodetectorf_hog-sgd_s${seed}_${paths.split_name}

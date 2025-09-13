@@ -1,0 +1,5 @@
+holo-star-world:
+  _target_: src.data.general_midvholov2fraud.GeneralDatasetMIDVv2
+  input_dir: ${paths.data_cropped_dir}/fraud/holo_star_world/
+  transform: ${valtransform}
+  skip: ${paths.frame_skip}

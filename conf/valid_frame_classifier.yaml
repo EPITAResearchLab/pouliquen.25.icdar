@@ -1,0 +1,30 @@
+# @package _global_
+defaults:
+  - _self_
+  # for the hydra framework
+  - paths: default
+  - hydra: default
+  # data and model definition
+  - data: midvholov2 # what data for training, validation and testing
+  - model: generic_model_bin_classifier # model used
+  # 1. training the model
+  - training: trainer_deep_valid # the decision.th will be automatically calculated
+  # 2. what decision to make, video level (end of frames), cumulative (if at some frame the threhsold is passed : considered true)
+  - decision: allvideo
+  # 3. how to select the best run for test
+  - tuner: selectfromruns # selects the best run (best fscore)
+  # what transform used for images
+  - valtransform: torchtransformssub
+
+# will be used for hydra logs and for the experiment name in mlflow, must be unique between diff models
+seed: 0
+task_name: holodetectorf_s${seed}_${model.model.backbone_name}_${paths.split_name}
+# experiment_name: ${task_name}_${paths.split_name}
+
+tune: True # find best decision threshold
+
+paths:
+  data_cropped_dir: ${paths.data_dir}/cropped_sub/
+
+decision:
+  th: -1 # with "tune: True" will be tuned

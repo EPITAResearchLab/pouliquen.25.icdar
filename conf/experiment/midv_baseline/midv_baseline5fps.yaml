@@ -1,0 +1,12 @@
+# @package _global_
+defaults:
+  - override /hydra/launcher: joblib
+
+paths:
+  frame_skip: 3
+
+task_name: midv_baseline_roifinal_newdataset_5fps_${paths.split_name}
+hydra:
+  launcher:
+    # override the number of jobs for joblib
+    n_jobs: 24

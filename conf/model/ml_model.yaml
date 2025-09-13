@@ -1,0 +1,7 @@
+_target_: src.models.ml_classifier.MLClassification
+model: null
+descriptor: 
+  _target_: src.models.ml.descriptors.FrameDescriptorExtractorGeneral
+  descriptor_extractor:
+    _target_: src.models.ml.descriptors.HOGExtractor
+  enable_vlad: False

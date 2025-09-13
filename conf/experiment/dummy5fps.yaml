@@ -1,0 +1,6 @@
+# @package _global_
+
+paths:
+  frame_skip: 3 # for 5fps
+
+task_name: pseudolabels_5fps_${paths.split_name}

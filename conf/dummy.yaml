@@ -1,0 +1,20 @@
+defaults:
+  - _self_
+  # for the hydra framework
+  - paths: default
+  - model: dummy
+  - data: dummy
+  - decision: allvideo
+  - hydra: default
+  - tuner: selectfromruns
+  - valtransform: pil
+
+# will be used for hydra logs and for the experiment name in mlflow, must be unique between diff models
+task_name: pseudolabels_${paths.split_name}
+
+seed: 0
+
+tune: True # find best decision threshold
+
+decision:
+  th: -1 # with tune: True will be tuned

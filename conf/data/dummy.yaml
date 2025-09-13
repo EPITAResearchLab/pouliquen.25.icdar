@@ -1,0 +1,76 @@
+train:
+  _target_: src.data.pseudolabel.MIDVHolov2PseudoLabel
+  input_dir: ${paths.data_dir}/cropped_sub/
+  split_file: ${paths.midvholo_split_dir}/simple/train.txt # used for calibration
+  skip: ${paths.frame_skip}
+test:
+  midv-holo-test:
+    _target_: src.data.pseudolabel.MIDVHolov2PseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  midv-holo-photo-replacement:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/photo_replacement/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  double_sticker:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/double_sticker/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  holo-completemask:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/holo_completemask/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  holo-star-world:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/holo_star_world/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  laser:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/laser/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  leaf-holo:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/leaf_holo/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  no-holo:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/no_holo/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  plain-holo:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/plain_holo/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  plastified-led:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/plastified_led/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  plastified-lowreflect:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/plastified_lowreflect/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  plastified-noholo:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/plastified_noholo/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  swap:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/swap/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
+  swap_three:
+    _target_: src.data.pseudolabel.GeneralFakeDatasetPseudoLabel
+    input_dir: ${paths.data_dir}/cropped_sub/fraud/swap_three/
+    split_file: ${paths.midvholo_split_dir}/simple/test.txt
+    skip: ${paths.frame_skip}
