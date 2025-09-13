@@ -1,5 +1,5 @@
 # Verification of Dynamic Holographic Behavior in Identity Documents
-Repository for the paper "Verification of Dynamic Holographic Behavior in Identity Documents" submitted to ICDAR 2025.
+Repository for the paper "Verification of Dynamic Holographic Behavior in Identity Documents" accepted at ICDAR 2025.
 
 ![dataset overview](data/figures/dataset_overview.png)
 
@@ -20,8 +20,6 @@ The experiments use the MIDV-Holo and MIDV-DynAttack datasets containing:
   - `cropped`: ROIs containing part of the face and main hologram
   - `cropped_sub`: ROIs after preprocessing
 
-Download the `source data` and the `cropped` data from Zenodo at [this link](https://zenodo.org).  
-
 #### Why are we providing Derived Data:
 - Ensures reproducibility of the experiments
 - Enables easier visualization of the dataset
@@ -40,6 +38,11 @@ focusing on the face area and the main hologram.
   The `cropped_sub` directory contains preprocessed ROIs:
   - Background subtraction was performed using `jobs/dataset/bg_sub.sh`
   - Pseudo-Labels were generated using `jobs/dataset/pseudolabel.sh`
+
+### Download the dataset
+Download the `source data` and the `cropped` data from Zenodo at [this link](https://zenodo.org/records/17079529).  
+Extract the `cropped.tar.gz` to `data/midvdynattack/cropped/` 
+Then use `jobs/dataset/bg_sub.sh` and `jobs/dataset/pseudolabel.sh` to generate `cropped_sub` and the pseudo-labels associated.
 
 ### Separation between MIDV-Holo and MIDV-DynAttack
 
@@ -173,3 +176,35 @@ Additionally, an exported version of the notebook is available at `notebooks/exp
 
 ## Framework
 The framework was built upon [Pouliquen et al.](https://github.com/EPITAResearchLab/pouliquen.24.icdar) work and uses [Hydra](https://hydra.cc/) and [MLflow](https://github.com/mlflow/mlflow) for experiment configuration and logging.
+
+## Citations
+If you use this work, please cite:
+```
+@inproceedings{pouliquen_dynattack_2025,
+  TITLE = {{Verification of Dynamic Holographic Behavior in Identity Documents}},
+  AUTHOR = {Pouliquen, Glen and Chazalon, Joseph and Chiron, Guillaume and G{\'e}raud, Thierry and Awal, Ahmad Montaser},
+  URL = {https://hal.science/hal-05204463},
+  BOOKTITLE = {{International Conference on Document Analysis and Recognition (ICDAR 2025)}},
+  ADDRESS = {Wuhan, China},
+  YEAR = {2025},
+}
+
+@inproceedings{pouliquen_weakly_2024,
+author = {Pouliquen, Glen and Chiron, Guillaume and Chazalon, Joseph and G\'{e}raud, Thierry and Awal, Ahmad Montaser},
+title = {Weakly Supervised Training for Hologram Verification in Identity Documents},
+booktitle = {Proceedings of the 18th International Conference on Document Analysis and Recognition (ICDAR)},
+year = {2024},
+pages = {17--33},
+doi = {10.1007/978-3-031-70533-5_2},
+}
+
+@inproceedings{koliaskina2023midv,
+  title={MIDV-Holo: A Dataset for ID Document Hologram Detection in a Video Stream},
+  author={Koliaskina, LI and Emelianova, EV and Tropin, DV and Popov, VV and Bulatov, KB and Nikolaev, DP and Arlazarov, VV},
+  booktitle={International Conference on Document Analysis and Recognition},
+  pages={486--503},
+  year={2023},
+  organization={Springer},
+  doi={https://doi.org/10.1007/978-3-031-41682-8_30}
+}
+```
