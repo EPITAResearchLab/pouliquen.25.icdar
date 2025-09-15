@@ -3,11 +3,6 @@ Repository for the paper "Verification of Dynamic Holographic Behavior in Identi
 
 ![dataset overview](data/figures/dataset_overview.png)
 
-## How to launch all the xp
-After creating a Python3 environment (tested with python 3.9) you can install all requirements with
-```bash
-pip install -r requirements.txt
-```
 ## Datasets
 The experiments use the MIDV-Holo and MIDV-DynAttack datasets containing:
 ### Source Data:
@@ -39,10 +34,61 @@ focusing on the face area and the main hologram.
   - Background subtraction was performed using `jobs/dataset/bg_sub.sh`
   - Pseudo-Labels were generated using `jobs/dataset/pseudolabel.sh`
 
-### Download the dataset
-Download the `source data` and the `cropped` data from Zenodo at [this link](https://zenodo.org/records/17079529).  
-Extract the `cropped.tar.gz` to `data/midvdynattack/cropped/` 
-Then use `jobs/dataset/bg_sub.sh` and `jobs/dataset/pseudolabel.sh` to generate `cropped_sub` and the pseudo-labels associated.
+### Download the Dataset
+You can choose to either use preprocessed data for quick reproduction or download raw data to process everything yourself.
+
+#### Paper result reproduction (using preprocessed data)
+For fast reproduction of the results:
+1. Download `cropped.tar.gz` from Zenodo at this link [this link](https://zenodo.org/records/17079529).
+2. Extract it to `data/midvdynattack/cropped/`.
+   ```
+   data/midvdynattack/cropped/
+   └── fraud
+    ├── holo_star_world
+    │   ├── ID
+    │   │   ├── id01_01_01
+   ```
+4. Generate `cropped_sub` and pseudo-labels
+  ```bash
+  jobs/dataset/bg_sub.sh
+  jobs/dataset/pseudolabel.sh
+  ```
+#### Download raw data and process it
+If you want to work with the raw data:
+1. Download the source data:
+   - MIDV-Holo from [this github page](https://github.com/SmartEngines/midv-holo).
+   - MIDV-DynAttack from Zenodo at this link [this link](https://zenodo.org/records/17079529).
+   - Tracking annotations at 15fps at [this link](https://zenodo.org/records/17079529).
+2. Generate the derived data:
+   - Extract frames from videos at 15 FPS:
+     ```bash
+     ffmpeg -i in/vid.mp4 -vf fps=15 -q:v 2 out/img_%04d.jpg
+     ```
+   - Rectify the documents using the tracking annotations.
+   - Extract ROIs (cropped images focusing on the face and hologram) to `data/midvdynattack/cropped/`.
+   - Generate `cropped_sub` and pseudo-labels
+    ```bash
+    jobs/dataset/bg_sub.sh
+    jobs/dataset/pseudolabel.sh
+    ```
+
+The final directory in `data/midvdynattack/cropped_sub` should be like:
+```
+data/midvdynattack/cropped_sub
+└── fraud
+    ├── leaf_holo
+    │   ├── ID
+    │   │   ├── id01_01_01
+    │   │   │   ├── video_infos.json
+    │   │   │   ├── img_0001.jpg
+...
+└── origins/
+    ├── ID
+    │   ├── id01_01_01
+    │   │   ├── video_infos.json
+    │   │   ├── img_0001.jpg
+...
+```
 
 ### Separation between MIDV-Holo and MIDV-DynAttack
 
@@ -78,8 +124,13 @@ fraud/pseudo_holo_copy/
 fraud/copy_without_holo/
 fraud/photo_replacement/
 ```
-Note: the videos of MIDV-Holo are not present in the `video` repository (only those of MIDV-DynAttack).  
+Note: MIDV-Holo videos are not present in the `video.tar.gz` file (only MIDV-DynAttack videos are included). 
 
+## How to launch the experiments
+After creating a Python3 environment (tested with python 3.9) you can install all requirements with
+```bash
+pip install -r requirements.txt
+```
 ### Main Experiments at 5fps
 
 
@@ -132,8 +183,6 @@ Experiments were run with:
 
 ### Results Analysis
 Use the notebook `notebooks/export_test_results.ipynb` to retrieve and format results.  
-Results are provided to verify results presented in the paper without running all experiments.  
-And final results were copied to markdown for a verification without having to run the notebook.  
 
 ## Methods training calibration and testing
 ### Training models
