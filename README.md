@@ -1,5 +1,5 @@
 # Verification of Dynamic Holographic Behavior in Identity Documents
-Repository for the paper "Verification of Dynamic Holographic Behavior in Identity Documents" accepted at ICDAR 2025.
+Repository for the paper "[Verification of Dynamic Holographic Behavior in Identity Documents](https://doi.org/10.1007/978-3-032-04624-6_19)" accepted at ICDAR 2025.
 
 ![dataset overview](data/figures/dataset_overview.png)
 
